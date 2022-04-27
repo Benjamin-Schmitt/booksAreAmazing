@@ -1,3 +1,4 @@
 # booksAreAmazing
 
-hello =)
+Description:
+Keep track of your progress, reading books

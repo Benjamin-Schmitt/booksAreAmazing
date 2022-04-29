@@ -43,6 +43,13 @@ function displayBooksFromMyBooksArray() {
         delButton.classList = 'delete';    
         document.body.appendChild(delButton);
 
+        var pageProgressLabel = document.createElement('label');
+        pageProgressLabel.innerText = 'at page';
+        var pageProgress = document.createElement('input');
+        pageProgress.type = 'number';
+        document.body.appendChild(pageProgressLabel);
+        document.body.appendChild(pageProgress);
+
         myBooks[i].on = true;
       }
     }

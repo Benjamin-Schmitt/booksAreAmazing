@@ -34,21 +34,21 @@ function displayBooksFromMyBooksArray() {
         auth.style.listStyle = 'none';
         auth.innerText = "by " + myBooks[i].author;     
         auth.classList = 'auth';
-        document.body.appendChild(auth); 
-
-        var delButton = document.createElement('button');
-        delButton.innerText = 'delete';
-        delButton.style.display = 'block';
-        delButton.style.marginBottom = '25px'
-        delButton.classList = 'delete';    
-        document.body.appendChild(delButton);
+        document.body.appendChild(auth);        
 
         var pageProgressLabel = document.createElement('label');
-        pageProgressLabel.innerText = 'at page';
+        pageProgressLabel.innerText = 'at page'; 
         var pageProgress = document.createElement('input');
         pageProgress.type = 'number';
         document.body.appendChild(pageProgressLabel);
         document.body.appendChild(pageProgress);
+
+        var delButton = document.createElement('button');
+        delButton.innerText = 'delete';
+        delButton.style.display = 'block';
+        delButton.classList = 'delete'; 
+        delButton.style.marginBottom = '25px';   
+        document.body.appendChild(delButton);
 
         myBooks[i].on = true;
       }

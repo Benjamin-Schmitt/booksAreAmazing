@@ -87,7 +87,7 @@ function addBooksToMyBooksArray() {
       let auth = document.getElementsByTagName("label")[ind+1].innerText
       let title = document.getElementsByTagName("h2")[ind].innerText
       
-      if(myBooks[0,myBooks.length-1].title !== title) {
+      if(myBooks[myBooks.length-1].title !== title) {
         myBooks.push (
           {
             id: myBooks.length+1,
@@ -102,7 +102,9 @@ function addBooksToMyBooksArray() {
       }
     displayBooksFromMyBooksArray()
     deleteBooksFromMyBooksArray()
-    }})}
+    }
+  }
+)}
 
 
 function queryOpenLibrary() {

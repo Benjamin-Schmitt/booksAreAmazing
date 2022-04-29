@@ -3,44 +3,50 @@ var myBooks = [
     id: 0,
     title: "Harry Potter and the Deathly Hallows",
     author: "J. K. Rowling",
-    cover: "http://covers.openlibrary.org/b/isbn/3551354073-M.jpg" 
+    cover: "http://covers.openlibrary.org/b/isbn/3551354073-M.jpg",
+    on: false
   },
   {
     id: 1,
     title: "Food and feeding",
     author: "Sir Henry Thompson",
-    cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg" 
+    cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
+    on: false
   },
 ];
 
 
 function displayBooksFromMyBooksArray() { 
   for(var i = 0; i < myBooks.length; i++) {
-    var titel = document.createElement('li');    
-    titel.style.listStyle = 'none';    
-    titel.innerText = myBooks[i].title;
-    titel.classList = 'title';
-    document.body.appendChild(titel);
+      if(myBooks[i].on !== true) {
+        var titel = document.createElement('li');    
+        titel.style.listStyle = 'none';    
+        titel.innerText = myBooks[i].title;
+        titel.classList = 'title';
+        document.body.appendChild(titel);
 
-    var img = document.createElement('img');
-    img.src = myBooks[i].cover;
-    img.classList = 'image'
-    document.body.appendChild(img);    
+        var img = document.createElement('img');
+        img.src = myBooks[i].cover;
+        img.classList = 'image'
+        document.body.appendChild(img);    
 
-    var auth = document.createElement('li');
-    auth.style.listStyle = 'none';
-    auth.innerText = "by " + myBooks[i].author;     
-    auth.classList = 'auth';
-    document.body.appendChild(auth); 
+        var auth = document.createElement('li');
+        auth.style.listStyle = 'none';
+        auth.innerText = "by " + myBooks[i].author;     
+        auth.classList = 'auth';
+        document.body.appendChild(auth); 
 
-    var delButton = document.createElement('button');
-    delButton.innerText = 'delete';
-    delButton.style.display = 'block';
-    delButton.style.marginBottom = '25px'
-    delButton.classList = 'delete';    
-    document.body.appendChild(delButton);
+        var delButton = document.createElement('button');
+        delButton.innerText = 'delete';
+        delButton.style.display = 'block';
+        delButton.style.marginBottom = '25px'
+        delButton.classList = 'delete';    
+        document.body.appendChild(delButton);
+
+        myBooks[i].on = true;
+      }
+    }
   }
-}
 displayBooksFromMyBooksArray()
 
 
@@ -73,15 +79,22 @@ function addBooksToMyBooksArray() {
       var img = document.getElementsByTagName("img")[ind]
       let auth = document.getElementsByTagName("label")[ind+1].innerText
       let title = document.getElementsByTagName("h2")[ind].innerText
-      myBooks.push(
-        {
-          id: myBooks.length+1,
-          title: title,
-          author: auth,
-          cover: img.src   
-        },
-      )
+      
+      if(myBooks[0,myBooks.length-1].title !== title) {
+        myBooks.push (
+          {
+            id: myBooks.length+1,
+            title: title,
+            author: auth,
+            cover: img.src,
+            on: false   
+          },
+        )
+      } else {
+        alert("book already on your list");
+      }
     displayBooksFromMyBooksArray()
+    deleteBooksFromMyBooksArray()
     }})}
 
 
@@ -90,7 +103,7 @@ function queryOpenLibrary() {
   fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value)
   .then(response => response.json())
   .then(response => {
-      for(var i=0; i<3; i++) {
+      for(var i=0; i<2; i++) {
           document.getElementById("output").innerHTML
           +="<h2>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"

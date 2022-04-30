@@ -15,7 +15,6 @@ var myBooks = [
   },
 ];
 
-
 function displayBooksFromMyBooksArray() { 
   for(var i = 0; i < myBooks.length; i++) {
       if(myBooks[i].on !== true) {
@@ -38,8 +37,10 @@ function displayBooksFromMyBooksArray() {
 
         var pageProgressLabel = document.createElement('label');
         pageProgressLabel.innerText = 'at page'; 
+        pageProgressLabel.classList = 'pageProgLab';
         var pageProgress = document.createElement('input');
         pageProgress.type = 'number';
+        pageProgress.classList = 'pageProg';
         document.body.appendChild(pageProgressLabel);
         document.body.appendChild(pageProgress);
 
@@ -56,7 +57,6 @@ function displayBooksFromMyBooksArray() {
   }
 displayBooksFromMyBooksArray()
 
-
 function deleteBooksFromMyBooksArray() {
   let delButton = document.querySelectorAll(".delete");
   delButton.forEach(function(books, index) {
@@ -64,20 +64,21 @@ function deleteBooksFromMyBooksArray() {
     let auth = document.querySelectorAll('.auth')[index];
     let delButtonT = document.querySelectorAll(".delete")[index];
     let title = document.querySelectorAll(".title")[index];
+    let pageCountLab = document.querySelectorAll(".pageProgLab")[index];
+    let pageCount = document.querySelectorAll(".pageProg")[index];
 
-    books.onclick = function() {
-      myBooks.splice(index, 1);
-      console.log(myBooks);      
+    books.onclick = function() {     
       img.remove();
       auth.remove();
       delButtonT.remove();
       title.remove();
+      pageCountLab.remove();
+      pageCount.remove();
+      myBooks.splice(index, 1)
     }
   }) 
 }
 deleteBooksFromMyBooksArray()
-
-
 
 function addBooksToMyBooksArray() {
   let cover = document.querySelectorAll(".addToMyReadingList");
@@ -86,8 +87,18 @@ function addBooksToMyBooksArray() {
       var img = document.getElementsByTagName("img")[ind]
       let auth = document.getElementsByTagName("label")[ind+1].innerText
       let title = document.getElementsByTagName("h2")[ind].innerText
-      
-      if(myBooks[myBooks.length-1].title !== title) {
+      let titleCheck = [];      
+      myBooks.forEach(function(currentValue) {
+        titleCheck.push(currentValue.title === title);              
+      })
+      console.log(titleCheck);
+        
+      if(titleCheck.includes(true)) {
+        console.log("book is in array");
+        alert("this book is already on your list");
+      } else 
+      {
+        console.log("book isn't in array")
         myBooks.push (
           {
             id: myBooks.length+1,
@@ -97,15 +108,12 @@ function addBooksToMyBooksArray() {
             on: false   
           },
         )
-      } else {
-        alert("book already on your list");
-      }
+      }      
     displayBooksFromMyBooksArray()
     deleteBooksFromMyBooksArray()
     }
   }
 )}
-
 
 function queryOpenLibrary() {
   document.getElementById('output').innerHTML="";
@@ -124,10 +132,4 @@ function queryOpenLibrary() {
   })
 }
 
-
-
-// tasks:
-// 1. add disabled to buttons
-// 2. prevent code from adding book thats already on the list
-// 3. save data in array
-// 4. reccomendation (add favorite books)
+// task: reccomendation (add favorite books)

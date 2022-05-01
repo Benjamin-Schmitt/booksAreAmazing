@@ -1,9 +1,9 @@
 var myBooks = [
   {
     id: 0,
-    title: "Harry Potter and the Deathly Hallows",
-    author: "J. K. Rowling",
-    cover: "http://covers.openlibrary.org/b/isbn/3551354073-M.jpg",
+    title: "Wooden ship-building",
+    author: "Charles Desmond",
+    cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
     on: false
   },
   {
@@ -116,6 +116,17 @@ function addBooksToMyBooksArray() {
 )}
 
 function queryOpenLibrary() {
+  var librarian = document.createElement('img');   
+  var librarianText = document.createElement('label');  
+  librarian.src = 'librarian.gif'; 
+  librarian.classList = 'librarian';
+  librarianText.classList = 'librariantext';  
+  librarianText.innerText = 'the librarian is on his way to get you your books';
+  librarianText.style.display = 'block';
+  document.getElementById("librarian").appendChild(librarianText);
+  document.getElementById("librarian").appendChild(librarian);
+
+
   document.getElementById('output').innerHTML="";
   fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value)
   .then(response => response.json())
@@ -126,10 +137,15 @@ function queryOpenLibrary() {
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
           +"<button class='addToMyReadingList'>add to my reading list</button>"
+         
       }
+      document.querySelector(".librarian").remove();
+      document.querySelector(".librariantext").remove();
     addBooksToMyBooksArray()
     deleteBooksFromMyBooksArray()
   })
 }
 
-// task: reccomendation (add favorite books)
+
+// todo: 
+// dropdown for outputs, using bootstrap

@@ -9,7 +9,7 @@
 
 #output {
     text-align: center;
-    background-color: rgb(164, 144, 144);
+    background-color: transparent;
     border: solid 2px black;
 }
 
@@ -20,4 +20,16 @@
 
 #librarian {
     display: block;
+}
+
+#inp {
+    display: block;
+    font-size: 26px;
+}
+
+html {    
+    /* background-image: url(bg.jpg);
+    background-repeat: repeat;
+    background-position: center; */
+    margin: auto;
 }

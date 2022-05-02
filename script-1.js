@@ -137,12 +137,30 @@ function queryOpenLibrary() {
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
           +"<button class='addToMyReadingList'>add to my reading list</button>"
-         
       }
-      document.querySelector(".librarian").remove();
-      document.querySelector(".librariantext").remove();
+      document.querySelector(".librarian").remove()
+      document.querySelector(".librariantext").remove()
     addBooksToMyBooksArray()
     deleteBooksFromMyBooksArray()
+  }).catch(e => {
+    if(e) {
+      let a=document.createElement('a');
+      a.target='_blank';
+      a.href='https://youtu.be/ssda8v36W9g?t=20';
+      if (window.confirm("You weren't specific enough in your search request or left the input field empty. The librarian is mad.")) {
+        a.click();
+        };
+        document.querySelector(".librarian").remove()
+        document.querySelector(".librariantext").remove()
+
+      librarian.src = "https://reellibrarians.files.wordpress.com/2017/10/screen-shot-2017-09-06-at-12-17-07-pm.png"
+      librarianText.innerText ="Dont you know Dewey Decimal System!?!?"
+
+      document.getElementById("librarian").appendChild(librarianText);
+      document.getElementById("librarian").appendChild(librarian);
+      
+      setTimeout(window.location.reload.bind(window.location), 3000)
+    }
   })
 }
 

@@ -15,7 +15,7 @@ const myBooks = [
   },
 ];
 
-function displayBooksFromMyBooksArray() { 
+function displayBooks() { 
   for(var i = 0; i < myBooks.length; i++) {
       if(myBooks[i].exists !== true) {
         let titel = document.createElement('li');    
@@ -56,7 +56,7 @@ function displayBooksFromMyBooksArray() {
     }
   }
 
-function deleteBooksFromMyBooksArray() {
+function deleteBooks() {
   let delButton = document.querySelectorAll(".delete");
   delButton.forEach(function(books, index) {
     let img = document.getElementsByClassName ('image')[index];
@@ -107,8 +107,8 @@ function addBooksToMyBooksArray() {
           },
         )
       }      
-    displayBooksFromMyBooksArray()
-    deleteBooksFromMyBooksArray()
+    displayBooks()
+    deleteBooks()
     }
   }
 )}
@@ -139,7 +139,7 @@ function queryOpenLibrary() {
       document.querySelector(".librarian").remove()
       document.querySelector(".librariantext").remove()
     addBooksToMyBooksArray()
-    deleteBooksFromMyBooksArray()
+    deleteBooks()
   }).catch(e => {
     if(e) {
       let a=document.createElement('a');
@@ -162,11 +162,9 @@ function queryOpenLibrary() {
   })
 }
 
-displayBooksFromMyBooksArray()
-deleteBooksFromMyBooksArray()
+displayBooks()
+deleteBooks()
 
 // todo: 
 // dropdown for outputs, using bootstrap
-// to array func
-// seperate func expressions from func call
 // add isbn number + filter for isbn existing in arr

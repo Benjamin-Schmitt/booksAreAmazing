@@ -4,20 +4,20 @@ const myBooks = [
     title: "Wooden ship-building",
     author: "Charles Desmond",
     cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
-    on: false
+    exists: false
   },
   {
     id: 1,
     title: "Food and feeding",
     author: "Sir Henry Thompson",
     cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
-    on: false
+    exists: false
   },
 ];
 
 function displayBooksFromMyBooksArray() { 
   for(var i = 0; i < myBooks.length; i++) {
-      if(myBooks[i].on !== true) {
+      if(myBooks[i].exists !== true) {
         let titel = document.createElement('li');    
         titel.style.listStyle = 'none';    
         titel.innerText = myBooks[i].title;
@@ -51,7 +51,7 @@ function displayBooksFromMyBooksArray() {
         delButton.style.marginBottom = '25px';   
         document.body.appendChild(delButton);
 
-        myBooks[i].on = true;
+        myBooks[i].exists = true;
       }
     }
   }
@@ -105,7 +105,7 @@ function addBooksToMyBooksArray() {
             title: title,
             author: auth,
             cover: img.src,
-            on: false   
+            exists: false   
           },
         )
       }      
@@ -168,7 +168,6 @@ function queryOpenLibrary() {
 // todo: 
 // dropdown for outputs, using bootstrap
 // to array func
-// let or const instead of var
 // seperate func expressions from func call
 // rename .on into "exists"
 // add isbn number + filter for isbn existing in arr

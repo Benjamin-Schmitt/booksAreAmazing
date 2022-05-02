@@ -1,9 +1,9 @@
 var myBooks = [
   {
     id: 0,
-    title: "Harry Potter and the Deathly Hallows",
-    author: "J. K. Rowling",
-    cover: "http://covers.openlibrary.org/b/isbn/3551354073-M.jpg",
+    title: "Wooden ship-building",
+    author: "Charles Desmond",
+    cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
     on: false
   },
   {
@@ -14,7 +14,6 @@ var myBooks = [
     on: false
   },
 ];
-
 
 function displayBooksFromMyBooksArray() { 
   for(var i = 0; i < myBooks.length; i++) {
@@ -38,8 +37,10 @@ function displayBooksFromMyBooksArray() {
 
         var pageProgressLabel = document.createElement('label');
         pageProgressLabel.innerText = 'at page'; 
+        pageProgressLabel.classList = 'pageProgLab';
         var pageProgress = document.createElement('input');
         pageProgress.type = 'number';
+        pageProgress.classList = 'pageProg';
         document.body.appendChild(pageProgressLabel);
         document.body.appendChild(pageProgress);
 
@@ -56,7 +57,6 @@ function displayBooksFromMyBooksArray() {
   }
 displayBooksFromMyBooksArray()
 
-
 function deleteBooksFromMyBooksArray() {
   let delButton = document.querySelectorAll(".delete");
   delButton.forEach(function(books, index) {
@@ -64,20 +64,21 @@ function deleteBooksFromMyBooksArray() {
     let auth = document.querySelectorAll('.auth')[index];
     let delButtonT = document.querySelectorAll(".delete")[index];
     let title = document.querySelectorAll(".title")[index];
+    let pageCountLab = document.querySelectorAll(".pageProgLab")[index];
+    let pageCount = document.querySelectorAll(".pageProg")[index];
 
-    books.onclick = function() {
-      myBooks.splice(index, 1);
-      console.log(myBooks);      
+    books.onclick = function() {     
       img.remove();
       auth.remove();
       delButtonT.remove();
       title.remove();
+      pageCountLab.remove();
+      pageCount.remove();
+      myBooks.splice(index, 1)
     }
   }) 
 }
 deleteBooksFromMyBooksArray()
-
-
 
 function addBooksToMyBooksArray() {
   let cover = document.querySelectorAll(".addToMyReadingList");
@@ -86,8 +87,18 @@ function addBooksToMyBooksArray() {
       var img = document.getElementsByTagName("img")[ind]
       let auth = document.getElementsByTagName("label")[ind+1].innerText
       let title = document.getElementsByTagName("h2")[ind].innerText
-      
-      if(myBooks[0,myBooks.length-1].title !== title) {
+      let titleCheck = [];      
+      myBooks.forEach(function(currentValue) {
+        titleCheck.push(currentValue.title === title);              
+      })
+      console.log(titleCheck);
+        
+      if(titleCheck.includes(true)) {
+        console.log("book is in array");
+        alert("this book is already on your list");
+      } else 
+      {
+        console.log("book isn't in array")
         myBooks.push (
           {
             id: myBooks.length+1,
@@ -97,15 +108,25 @@ function addBooksToMyBooksArray() {
             on: false   
           },
         )
-      } else {
-        alert("book already on your list");
-      }
+      }      
     displayBooksFromMyBooksArray()
     deleteBooksFromMyBooksArray()
-    }})}
-
+    }
+  }
+)}
 
 function queryOpenLibrary() {
+  var librarian = document.createElement('img');   
+  var librarianText = document.createElement('label');  
+  librarian.src = 'librarian.gif'; 
+  librarian.classList = 'librarian';
+  librarianText.classList = 'librariantext';  
+  librarianText.innerText = 'the librarian is on his way to get you your books';
+  librarianText.style.display = 'block';
+  document.getElementById("librarian").appendChild(librarianText);
+  document.getElementById("librarian").appendChild(librarian);
+
+
   document.getElementById('output').innerHTML="";
   fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value)
   .then(response => response.json())
@@ -116,16 +137,20 @@ function queryOpenLibrary() {
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
           +"<button class='addToMyReadingList'>add to my reading list</button>"
+         
       }
+      document.querySelector(".librarian").remove();
+      document.querySelector(".librariantext").remove();
     addBooksToMyBooksArray()
     deleteBooksFromMyBooksArray()
   })
 }
 
 
-
-// tasks:
-// 1. add disabled to buttons
-// 2. prevent code from adding book thats already on the list
-// 3. save data in array
-// 4. reccomendation (add favorite books)
+// todo: 
+// dropdown for outputs, using bootstrap
+// to array func
+// let or const instead of var
+// seperate func expressions from func call
+// rename .on into "exists"
+// add isbn number + filter for isbn existing in arr

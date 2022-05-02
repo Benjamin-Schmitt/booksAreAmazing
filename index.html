@@ -3,31 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <link rel="stylesheet" href="style.css">
     <title>Book List</title>
 </head>
 
 
 <body>
+    <div id="bg">
 
-    <div id="search_block">
-    <h1>Book Reading List</h1>    
-    <label for="input">search for books</label>
-    <input id="input">
-    <button onclick="queryOpenLibrary()">search</button>
+        <div id="search_block">
+            
+            <div id="typed-strings">
+                <h1>Book Reading List</h1>
+            </div>
+            <span id="typed"></span>
+            
+            <script>
+                var typed = new Typed('#typed', {
+                stringsElement: '#typed-strings',
+                backSpeed: 0,
+                typeSpeed: 40
+                });        
+            </script>
+        
+        <label id="inp" for="input">search for books</label>
+        <input id="input">
+        <button onclick="queryOpenLibrary()">search</button>
+        <div id="librarian"></div>
+        </div>
+
+        <div id="output">
+        
+        </div>
+        <hr>
+        <h4>books, recommended by the developers of this site: </h4>
+
     </div>
-
-    <div id="output">
-        <!-- openlibrary.com -->
-    </div>
-    <hr>
-
-
 
     <script src="script-1.js"></script>
 </body>
 </html>
-
-
-<!-- dropdown for outputs, using bootstrap -->

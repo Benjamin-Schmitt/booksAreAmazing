@@ -2,13 +2,34 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     text-align: center;
     border: solid 2px black;
-    background-color: rgb(223, 212, 212);
+    background-color: white;
     padding: 2%;
     margin-bottom: 2px;
 }
 
 #output {
     text-align: center;
-    background-color: rgb(164, 144, 144);
+    background-color: transparent;
     border: solid 2px black;
+}
+
+.librarian {
+    width: 200px;
+    height: auto;
+}
+
+#librarian {
+    display: block;
+}
+
+#inp {
+    display: block;
+    font-size: 26px;
+}
+
+html {    
+    /* background-image: url(bg.jpg);
+    background-repeat: repeat;
+    background-position: center; */
+    margin: auto;
 }

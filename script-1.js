@@ -149,3 +149,8 @@ function queryOpenLibrary() {
 
 // todo: 
 // dropdown for outputs, using bootstrap
+// to array func
+// let or const instead of var
+// seperate func expressions from func call
+// rename .on into "exists"
+// add isbn number + filter for isbn existing in arr

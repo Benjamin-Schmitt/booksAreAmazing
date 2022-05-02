@@ -1,4 +1,4 @@
-var myBooks = [
+const myBooks = [
   {
     id: 0,
     title: "Wooden ship-building",
@@ -18,33 +18,33 @@ var myBooks = [
 function displayBooksFromMyBooksArray() { 
   for(var i = 0; i < myBooks.length; i++) {
       if(myBooks[i].on !== true) {
-        var titel = document.createElement('li');    
+        let titel = document.createElement('li');    
         titel.style.listStyle = 'none';    
         titel.innerText = myBooks[i].title;
         titel.classList = 'title';
         document.body.appendChild(titel);
 
-        var img = document.createElement('img');
+        let img = document.createElement('img');
         img.src = myBooks[i].cover;
         img.classList = 'image'
         document.body.appendChild(img);    
 
-        var auth = document.createElement('li');
+        let auth = document.createElement('li');
         auth.style.listStyle = 'none';
         auth.innerText = "by " + myBooks[i].author;     
         auth.classList = 'auth';
         document.body.appendChild(auth);        
 
-        var pageProgressLabel = document.createElement('label');
+        let pageProgressLabel = document.createElement('label');
         pageProgressLabel.innerText = 'at page'; 
         pageProgressLabel.classList = 'pageProgLab';
-        var pageProgress = document.createElement('input');
+        let pageProgress = document.createElement('input');
         pageProgress.type = 'number';
         pageProgress.classList = 'pageProg';
         document.body.appendChild(pageProgressLabel);
         document.body.appendChild(pageProgress);
 
-        var delButton = document.createElement('button');
+        let delButton = document.createElement('button');
         delButton.innerText = 'delete';
         delButton.style.display = 'block';
         delButton.classList = 'delete'; 
@@ -116,8 +116,8 @@ function addBooksToMyBooksArray() {
 )}
 
 function queryOpenLibrary() {
-  var librarian = document.createElement('img');   
-  var librarianText = document.createElement('label');  
+  let librarian = document.createElement('img');   
+  let librarianText = document.createElement('label');  
   librarian.src = 'librarian.gif'; 
   librarian.classList = 'librarian';
   librarianText.classList = 'librariantext';  
@@ -131,7 +131,7 @@ function queryOpenLibrary() {
   fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value)
   .then(response => response.json())
   .then(response => {
-      for(var i=0; i<2; i++) {
+      for(let i=0; i<2; i++) {
           document.getElementById("output").innerHTML
           +="<h2>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"

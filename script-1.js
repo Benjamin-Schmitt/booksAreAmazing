@@ -55,7 +55,6 @@ function displayBooksFromMyBooksArray() {
       }
     }
   }
-displayBooksFromMyBooksArray()
 
 function deleteBooksFromMyBooksArray() {
   let delButton = document.querySelectorAll(".delete");
@@ -78,7 +77,6 @@ function deleteBooksFromMyBooksArray() {
     }
   }) 
 }
-deleteBooksFromMyBooksArray()
 
 function addBooksToMyBooksArray() {
   let cover = document.querySelectorAll(".addToMyReadingList");
@@ -164,10 +162,11 @@ function queryOpenLibrary() {
   })
 }
 
+displayBooksFromMyBooksArray()
+deleteBooksFromMyBooksArray()
 
 // todo: 
 // dropdown for outputs, using bootstrap
 // to array func
 // seperate func expressions from func call
-// rename .on into "exists"
 // add isbn number + filter for isbn existing in arr

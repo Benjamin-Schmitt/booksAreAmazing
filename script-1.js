@@ -1,63 +1,66 @@
-var myBooks = [
+const myBooks = [
   {
     id: 0,
     title: "Wooden ship-building",
     author: "Charles Desmond",
     cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
-    on: false
+    exists: false
   },
   {
     id: 1,
     title: "Food and feeding",
     author: "Sir Henry Thompson",
     cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
-    on: false
+    exists: false
   },
 ];
 
-function displayBooksFromMyBooksArray() { 
+function displayBooks() { 
   for(var i = 0; i < myBooks.length; i++) {
-      if(myBooks[i].on !== true) {
-        var titel = document.createElement('li');    
+    let newDiv = document.createElement('div');
+    newDiv.classList = 'card';
+    document.body.appendChild(newDiv);
+
+      if(myBooks[i].exists !== true) {
+        let titel = document.createElement('li');    
         titel.style.listStyle = 'none';    
         titel.innerText = myBooks[i].title;
         titel.classList = 'title';
-        document.body.appendChild(titel);
+        document.getElementsByClassName("card")[i].appendChild(titel);
 
-        var img = document.createElement('img');
+        let img = document.createElement('img');
         img.src = myBooks[i].cover;
         img.classList = 'image'
-        document.body.appendChild(img);    
+        document.getElementsByClassName("card")[i].appendChild(img);   
 
-        var auth = document.createElement('li');
+        let auth = document.createElement('li');
         auth.style.listStyle = 'none';
         auth.innerText = "by " + myBooks[i].author;     
         auth.classList = 'auth';
-        document.body.appendChild(auth);        
+        document.getElementsByClassName("card")[i].appendChild(auth);    
 
-        var pageProgressLabel = document.createElement('label');
+        let pageProgressLabel = document.createElement('label');
         pageProgressLabel.innerText = 'at page'; 
         pageProgressLabel.classList = 'pageProgLab';
-        var pageProgress = document.createElement('input');
+        let pageProgress = document.createElement('input');
         pageProgress.type = 'number';
         pageProgress.classList = 'pageProg';
-        document.body.appendChild(pageProgressLabel);
-        document.body.appendChild(pageProgress);
+        document.getElementsByClassName("card")[i].appendChild(pageProgressLabel);    
+        document.getElementsByClassName("card")[i].appendChild(pageProgress);    
 
-        var delButton = document.createElement('button');
+        let delButton = document.createElement('button');
         delButton.innerText = 'delete';
         delButton.style.display = 'block';
         delButton.classList = 'delete'; 
         delButton.style.marginBottom = '25px';   
-        document.body.appendChild(delButton);
+        document.getElementsByClassName("card")[i].appendChild(delButton);    
 
-        myBooks[i].on = true;
+        myBooks[i].exists = true;
       }
     }
   }
-displayBooksFromMyBooksArray()
 
-function deleteBooksFromMyBooksArray() {
+function deleteBooks() {
   let delButton = document.querySelectorAll(".delete");
   delButton.forEach(function(books, index) {
     let img = document.getElementsByClassName ('image')[index];
@@ -78,7 +81,6 @@ function deleteBooksFromMyBooksArray() {
     }
   }) 
 }
-deleteBooksFromMyBooksArray()
 
 function addBooksToMyBooksArray() {
   let cover = document.querySelectorAll(".addToMyReadingList");
@@ -105,19 +107,19 @@ function addBooksToMyBooksArray() {
             title: title,
             author: auth,
             cover: img.src,
-            on: false   
+            exists: false   
           },
         )
       }      
-    displayBooksFromMyBooksArray()
-    deleteBooksFromMyBooksArray()
+    displayBooks()
+    deleteBooks()
     }
   }
 )}
 
 function queryOpenLibrary() {
-  var librarian = document.createElement('img');   
-  var librarianText = document.createElement('label');  
+  let librarian = document.createElement('img');   
+  let librarianText = document.createElement('label');  
   librarian.src = 'librarian.gif'; 
   librarian.classList = 'librarian';
   librarianText.classList = 'librariantext';  
@@ -131,26 +133,43 @@ function queryOpenLibrary() {
   fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value)
   .then(response => response.json())
   .then(response => {
-      for(var i=0; i<2; i++) {
+      for(let i=0; i<2; i++) {
           document.getElementById("output").innerHTML
           +="<h2>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
           +"<button class='addToMyReadingList'>add to my reading list</button>"
-         
       }
-      document.querySelector(".librarian").remove();
-      document.querySelector(".librariantext").remove();
+      document.querySelector(".librarian").remove()
+      document.querySelector(".librariantext").remove()
     addBooksToMyBooksArray()
-    deleteBooksFromMyBooksArray()
+    deleteBooks()
+  }).catch(e => {
+    if(e) {
+      let a=document.createElement('a');
+      a.target='_blank';
+      a.href='https://youtu.be/ssda8v36W9g?t=20';
+      if (window.confirm("You weren't specific enough in your search request or left the input field empty. The librarian is mad.")) {
+        a.click();
+        };
+        document.querySelector(".librarian").remove()
+        document.querySelector(".librariantext").remove()
+
+      librarian.src = "https://reellibrarians.files.wordpress.com/2017/10/screen-shot-2017-09-06-at-12-17-07-pm.png"
+      librarianText.innerText ="Dont you know Dewey Decimal System!?!?"
+
+      document.getElementById("librarian").appendChild(librarianText);
+      document.getElementById("librarian").appendChild(librarian);
+      
+      setTimeout(window.location.reload.bind(window.location), 3000)
+    }
   })
 }
 
+displayBooks()
+deleteBooks()
 
 // todo: 
 // dropdown for outputs, using bootstrap
-// to array func
-// let or const instead of var
-// seperate func expressions from func call
-// rename .on into "exists"
 // add isbn number + filter for isbn existing in arr
+// fix creation of multiple .card divs

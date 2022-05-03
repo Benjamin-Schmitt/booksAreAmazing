@@ -12,9 +12,7 @@
 
 <body>
     <div id="bg">
-
-        <div id="search_block">
-            
+        <div id="search_block">            
             <div id="typed-strings">
                 <h1>Book Reading List</h1>
             </div>
@@ -28,16 +26,21 @@
                 });        
             </script>
         
-        <label id="inp" for="input">search for books</label>
+        <label id="inp" for="input">search for books by title</label>
         <input id="input">
-        <button onclick="queryOpenLibrary()">search</button>
+        
+
+        
+            <button onclick="queryOpenLibrary()">search</button>
+        
+
         <div id="librarian"></div>
         </div>
 
-        <div id="output">
+        <div id="output"></div>
         
-        </div>
         <hr>
+        
         <h4>books, recommended by the developers of this site: </h4>
 
     </div>

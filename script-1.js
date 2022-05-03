@@ -17,23 +17,27 @@ const myBooks = [
 
 function displayBooks() { 
   for(var i = 0; i < myBooks.length; i++) {
+    let newDiv = document.createElement('div');
+    newDiv.classList = 'card';
+    document.body.appendChild(newDiv);
+
       if(myBooks[i].exists !== true) {
         let titel = document.createElement('li');    
         titel.style.listStyle = 'none';    
         titel.innerText = myBooks[i].title;
         titel.classList = 'title';
-        document.body.appendChild(titel);
+        document.getElementsByClassName("card")[i].appendChild(titel);
 
         let img = document.createElement('img');
         img.src = myBooks[i].cover;
         img.classList = 'image'
-        document.body.appendChild(img);    
+        document.getElementsByClassName("card")[i].appendChild(img);   
 
         let auth = document.createElement('li');
         auth.style.listStyle = 'none';
         auth.innerText = "by " + myBooks[i].author;     
         auth.classList = 'auth';
-        document.body.appendChild(auth);        
+        document.getElementsByClassName("card")[i].appendChild(auth);    
 
         let pageProgressLabel = document.createElement('label');
         pageProgressLabel.innerText = 'at page'; 
@@ -41,15 +45,15 @@ function displayBooks() {
         let pageProgress = document.createElement('input');
         pageProgress.type = 'number';
         pageProgress.classList = 'pageProg';
-        document.body.appendChild(pageProgressLabel);
-        document.body.appendChild(pageProgress);
+        document.getElementsByClassName("card")[i].appendChild(pageProgressLabel);    
+        document.getElementsByClassName("card")[i].appendChild(pageProgress);    
 
         let delButton = document.createElement('button');
         delButton.innerText = 'delete';
         delButton.style.display = 'block';
         delButton.classList = 'delete'; 
         delButton.style.marginBottom = '25px';   
-        document.body.appendChild(delButton);
+        document.getElementsByClassName("card")[i].appendChild(delButton);    
 
         myBooks[i].exists = true;
       }
@@ -168,3 +172,4 @@ deleteBooks()
 // todo: 
 // dropdown for outputs, using bootstrap
 // add isbn number + filter for isbn existing in arr
+// fix creation of multiple .card divs

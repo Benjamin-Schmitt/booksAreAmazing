@@ -72,6 +72,7 @@ function deleteBooks() {
     let pageCountLab = document.querySelectorAll(".pageProgLab")[index];
     let pageCount = document.querySelectorAll(".pageProg")[index];
     let newDiv = document.querySelectorAll(".card")[index];
+    let brbd = document.querySelector("#brbd");
     
     i = index;
     books.onclick = function() { 
@@ -103,6 +104,7 @@ function deleteBooks() {
       // surrender: workaround
       if(myBooks.length === 1) {
         myBooks.splice(0, 1);
+        brbd.remove();
       } else {
         myBooks.splice(index, 1);
       }

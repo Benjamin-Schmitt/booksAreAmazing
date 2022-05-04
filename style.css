@@ -4,7 +4,6 @@
     border: solid 2px black;
     background-color: white;
     padding: 2%;
-    margin-bottom: 2px;
 }
 
 #output {
@@ -27,14 +26,26 @@
     font-size: 26px;
 }
 
-html {    
-    /* background-image: url(bg.jpg);
-    background-repeat: repeat;
-    background-position: center; */
-    margin: auto;
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: #7e7e7e;
+    color: #fff;
+    height: 95%;
+    width: 99%;
+    border-radius: 5px; 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border:solid;
 }
 
-.card {
-    text-align: center;
-    background-color: rgb(110, 110, 209);
+#theReadingList {    
+    background-color: #353535;
+    padding: 2%;
+    display: grid;
+    gap: 2%;
+    grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
 }

@@ -20,7 +20,7 @@ function displayBooks() {
       if(myBooks[i].exists !== true) {        
         let newDiv = document.createElement('div');
         newDiv.classList = 'card';
-        document.body.appendChild(newDiv);
+        document.getElementById("theReadingList").appendChild(newDiv);
 
         let titel = document.createElement('li');    
         titel.style.listStyle = 'none';    

@@ -76,13 +76,7 @@ function deleteBooks() {
     let brbd = document.querySelector("#brbd");
     
     i = index;
-    books.onclick = function() { 
-      /* console.log("I am i " + i)   
-      console.log(delButton)
-      console.log("index number: " + index); 
-      console.log(`myBooks Array:`);
-      console.log(myBooks); */
-      
+    books.onclick = function() {      
       img.remove();
       auth.remove();
       delButtonT.remove();
@@ -91,25 +85,13 @@ function deleteBooks() {
       pageCount.remove();
       newDiv.remove();
 
-      // PROBLEM: we are always removing index one instead of index zero
-      // because the button remains asigned to its original place (1)
-      // hint: the bug does not seem to be related to the styling
-      // solution: get right index number
-
-      // maybe make new html file, create simply 2 buttons. then create a js file and create an array. add function to the buttons, then delete them from array and see what happens.
-
-       // maybe taking the delButton query out of the function and updating it could help      
-
-      // SOLUTION: RN, I JUST CALL IT WITHIN THE CODE, SO IT ONLY GETS RUN ONCE. WHAT I NEED TO DO IS ADD THIS FUNCTION TO THE DELETE BUTTONS IN THE DISPLAY FUNCTION WHERE THE BUTTONS ARE CREATED SO IT GETS REASIGNED EACH TIME ANEW + check programm flow again
-
-      // surrender: workaround
+      // workaround
       if(myBooks.length === 1) {
         myBooks.splice(0, 1);
         brbd.remove();
       } else {
         myBooks.splice(index, 1);
       }
-      
     }
   })
 }
@@ -166,9 +148,6 @@ function queryOpenLibrary() {
   .then(response => response.json())
   .then(response => {
       for(let i=0; i<2; i++) {
-        //create div element
-        // put in there
-        // change HTML, and add to new div in HTML
         document.getElementById("output").innerHTML
           +="<h2>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"
@@ -210,8 +189,3 @@ document.getElementById("input").addEventListener("keypress", function(event) {
 
 displayBooks()
 deleteBooks()
-
-// todo: 
-// dropdown for outputs, using bootstrap
-// add isbn number + filter for isbn existing in arr
-// fix creation of multiple .card divs

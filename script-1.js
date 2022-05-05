@@ -31,7 +31,6 @@ function displayBooks() {
         let img = document.createElement('img');
         img.src = myBooks[i].cover;
         img.classList = 'image';
-        //img.width = '100px';
         document.querySelectorAll(".card")[i].appendChild(img);   
 
         let auth = document.createElement('li');
@@ -186,6 +185,7 @@ document.getElementById("input").addEventListener("keypress", function(event) {
     queryOpenLibrary();
   }
 })
+
 
 displayBooks()
 deleteBooks()

@@ -47,6 +47,7 @@
     border:solid;
 }
 
+
 #theReadingList {    
     background-color: #353535;
     padding: 2%;
@@ -55,10 +56,34 @@
     grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
 }
 
+
+
+
+/* IMAGE */
 .image {
     width: 175px;
     height: auto;
 }
+
+.image:hover {
+    transform: rotateY(180deg);
+    width: 175px;
+    height: auto;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    background-color: #353535;
+}
+
+.image:not(:hover) {
+    width: 175px;
+    height: auto;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+
+
+
 
 .title {
     text-align: center;
@@ -129,15 +154,12 @@
 }
 
 #typed {
-    font-size: 50px;
-    color: green;
+    font-size: 30px;
+    color: black;
 }
 
 .typed-cursor {
-    color: green;
-    font-size: 50px;
-    opacity: 1;
-    -webkit-animation: blink 0.7s;
-    -moz-animation: blink 0.7s;
-    animation: blink 0.7s;
+    color: black;
+    font-size: 30px;
+    animation: blink 1s;
 }

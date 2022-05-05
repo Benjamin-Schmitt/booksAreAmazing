@@ -22,8 +22,13 @@
                 var typed = new Typed('#typed', {
                 stringsElement: '#typed-strings',
                 backSpeed: 0,
-                typeSpeed: 40
-                });        
+                typeSpeed: 40,
+                cursorChar: "|",
+                onStringTyped: function test(){
+                    return document.querySelector('.typed-cursor').remove();
+                }
+                });    
+                console.dir(typed)    
             </script>
         
         <label id="inp" for="input">search for books by title</label>

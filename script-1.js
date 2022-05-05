@@ -57,9 +57,9 @@ function displayBooks() {
         document.querySelectorAll(".card")[i].appendChild(delButton);
 
         myBooks[i].exists = true;
-      }
     }
   }
+};
 
 function deleteBooks() {
   let delButton = document.querySelectorAll(".delete");
@@ -93,7 +93,7 @@ function deleteBooks() {
       }
     }
   })
-}
+};
 
 function addBooksToMyBooksArray() {
   let cover = document.querySelectorAll(".addToMyReadingList");
@@ -128,7 +128,7 @@ function addBooksToMyBooksArray() {
     deleteBooks()
     }
   }
-)}
+)};
 
 function queryOpenLibrary() {
   let librarian = document.createElement('img');   
@@ -177,15 +177,14 @@ function queryOpenLibrary() {
       setTimeout(window.location.reload.bind(window.location), 3000)
     }
   })
-}
+};
 
 document.getElementById("input").addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
     queryOpenLibrary();
   }
-})
-
+});
 
 displayBooks()
 deleteBooks()

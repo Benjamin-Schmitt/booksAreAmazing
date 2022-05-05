@@ -123,7 +123,21 @@
     border: 2px solid black;
 }
 
+#test {
+    font-size: 50px !important;
+    color: green;
+}
 
+#typed {
+    font-size: 50px !important;
+    color: green;
+}
 
-
-/* for Abed how the fuck do we change the font-size of the "Book Reading List" Title? cheers Basil*/
+.typed-cursor {
+    color: green;
+    font-size: 50px;
+    opacity: 1;
+    -webkit-animation: blink 0.7s 2s;
+    -moz-animation: blink 0.7s 2s;
+    animation: blink 0.7s 2s;
+}

@@ -58,7 +58,6 @@
 .image {
     width: 175px;
     height: auto;
-
 }
 
 .title {
@@ -80,8 +79,7 @@
     box-shadow: 10px 5px 5px orange;
 }
 
-.pageProg {
-   
+.pageProg {   
     width: 20%; 
 }
 
@@ -95,6 +93,37 @@
     background: #6ee60c45;
     border-radius: 10px 10px 10px 10px;
     font-weight: bold;
-    margin-top: 10px;
+    margin-top: 10px;    
+    margin-bottom: 25px;
 }
+
+.addToMyReadingList:hover {
+    border: solid 1px black;
+    background: #6ee60c45;
+    border-radius: 10px 10px 10px 10px;
+    font-weight: bold;
+    margin-top: 10px;
+    box-shadow: 3px 1px 1px rgb(5, 239, 145);
+    margin-bottom: 25px;
+}
+
+#search {
+    width: 75px;
+    height: 25px;
+    background-color: greenyellow;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#search:hover {
+    width: 75px;
+    height: 25px;
+    background-color: greenyellow;
+    box-shadow: 3px 1px 1px rgb(5, 63, 239);
+    border: 2px solid black;
+}
+
+
+
+
 /* for Abed how the fuck do we change the font-size of the "Book Reading List" Title? cheers Basil*/

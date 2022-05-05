@@ -169,7 +169,7 @@ function queryOpenLibrary() {
         //create div element
         // put in there
         // change HTML, and add to new div in HTML
-          document.getElementById("output").innerHTML
+        document.getElementById("output").innerHTML
           +="<h2>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
@@ -200,6 +200,13 @@ function queryOpenLibrary() {
     }
   })
 }
+
+document.getElementById("input").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    queryOpenLibrary();
+  }
+})
 
 displayBooks()
 deleteBooks()

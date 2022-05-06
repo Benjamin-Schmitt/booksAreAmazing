@@ -144,6 +144,7 @@ function queryOpenLibrary() {
   let librarianText = document.createElement('label');  
   librarian.src = 'librarian.gif'; 
   librarian.classList = 'librarian';
+  librarian.style = ' border-radius: 50%; '
   librarianText.classList = 'librariantext';  
   librarianText.innerText = 'the librarian is on his way to get you your books';
   librarianText.style.display = 'block';
@@ -157,7 +158,8 @@ function queryOpenLibrary() {
   .then(response => {
       for(let i=0; i<1; i++) {
         document.getElementById("output").innerHTML
-          +="<h2>"+response.docs[i].title+"</h2>"
+          +="<h2 class='bookTitle'>"+response.docs[i].title+"</h2>"
+
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
           +"<button class='addToMyReadingList'>add to my reading list</button>"

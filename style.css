@@ -4,17 +4,31 @@ html {
 }
 
 #search_block {
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-family: 'American Typewriter', sans-serif;
     text-align: center;
     border: solid 2px black;
-    background-color: white;
+    border-radius: 5px; 
+    background-color: #09a2ee5b;
     padding: 2%;
 }
 
+#brbd {
+    font-family: 'American Typewriter', sans-serif;
+    font-weight: normal;
+    text-align: left;
+}
+
 #output {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'American Typewriter', sans-serif;
     text-align: center;
-    background-color: transparent;
+    font-weight: bold;
+    background-color: #09a2ee5b;
     border: solid 2px black;
+    border-radius: 5px; 
 }
 
 .librarian {
@@ -23,7 +37,7 @@ html {
 }
 
 #librarian {
-    display: block;
+     display: block;
 }
 
 #inp {
@@ -41,8 +55,8 @@ html {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: #7e7e7e;
-    color: #fff;
+    background: #09a2ee91;
+    color: black;
     height: 95%;
     width: 99%;
     border-radius: 5px; 
@@ -54,7 +68,11 @@ html {
 
 
 #theReadingList {    
+    background-image:url(shutterstock_160993595.png);
     background-color: #353535;
+    color: black;
+    border-radius: 5px; 
+    border:solid;
     padding: 2%;
     display: grid;
     gap: 2%;
@@ -86,7 +104,11 @@ html {
     transform-style: preserve-3d;
 }
 
-
+.bookTitle {
+    font-family: 'American Typewriter', sans-serif;
+    text-align: center;
+    font-weight: normal;  
+}
 
 
 
@@ -156,11 +178,13 @@ html {
 #test {
     font-size: 50px !important;
     color: green;
+    font-weight: bold;
 }
 
 #typed {
-    font-size: 30px;
+    font-size: 70px;
     color: black;
+    font-weight: bold;
 }
 
 .typed-cursor {

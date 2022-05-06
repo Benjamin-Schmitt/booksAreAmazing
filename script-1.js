@@ -4,14 +4,16 @@ let myBooks = [
     title: "Wooden ship-building",
     author: "Charles Desmond",
     cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
-    exists: false
+    exists: false,
+    isbn: 123
   },
   {
     id: 1,
     title: "Food and feeding",
     author: "Sir Henry Thompson",
     cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
-    exists: false
+    exists: false,
+    isbn: 123
   },
 ];
 
@@ -21,6 +23,12 @@ function displayBooks() {
         let newDiv = document.createElement('div');
         newDiv.classList = 'card';
         document.getElementById("theReadingList").appendChild(newDiv);
+
+        let isbn = document.createElement('li'); 
+        isbn.style.listStyle = 'none';  
+        isbn.innerText = myBooks[i].isbn;
+        isbn.classList = 'isbn';
+        document.querySelectorAll(".card")[i].appendChild(isbn);
 
         let titel = document.createElement('li');    
         titel.style.listStyle = 'none';    
@@ -120,7 +128,8 @@ function addBooksToMyBooksArray() {
             title: title,
             author: auth,
             cover: img.src,
-            exists: false   
+            exists: false  ,
+            isbn:  123
           },
         )
       }      
@@ -146,12 +155,13 @@ function queryOpenLibrary() {
   fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value)
   .then(response => response.json())
   .then(response => {
-      for(let i=0; i<2; i++) {
+      for(let i=0; i<1; i++) {
         document.getElementById("output").innerHTML
           +="<h2>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
           +"<button class='addToMyReadingList'>add to my reading list</button>"
+          console.log(response.docs[0]);
       }
       document.querySelector(".librarian").remove()
       document.querySelector(".librariantext").remove()
@@ -185,6 +195,11 @@ document.getElementById("input").addEventListener("keypress", function(event) {
     queryOpenLibrary();
   }
 });
+
+
+function flip(){
+  // flip images multiple times when adding to the reading list
+}
 
 displayBooks()
 deleteBooks()

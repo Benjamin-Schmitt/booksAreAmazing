@@ -25,7 +25,7 @@ html {
     align-items: center;
     font-family: 'American Typewriter', sans-serif;
     text-align: center;
-    font-weight: normal;
+    font-weight: bold;
     background-color: #09a2ee5b;
     border: solid 2px black;
     border-radius: 5px; 
@@ -37,7 +37,7 @@ html {
 }
 
 #librarian {
-    display: block;
+     display: block;
 }
 
 #inp {
@@ -104,7 +104,11 @@ html {
     transform-style: preserve-3d;
 }
 
-
+.bookTitle {
+    font-family: 'American Typewriter', sans-serif;
+    text-align: center;
+    font-weight: normal;  
+}
 
 
 

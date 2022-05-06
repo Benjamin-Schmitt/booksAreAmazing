@@ -152,6 +152,7 @@ function queryOpenLibrary() {
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
           +"<button class='addToMyReadingList'>add to my reading list</button>"
+          console.log(response.docs[0]);
       }
       document.querySelector(".librarian").remove()
       document.querySelector(".librariantext").remove()

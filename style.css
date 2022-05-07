@@ -40,24 +40,25 @@ button {
     background: #09a2ee91;
     color: black;
     height: 100%;
-    width: 99%;
+    width: 100%;
     border-radius: 5px; 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border:solid;
+    border: solid;
 }
 
 
-#theReadingList {    
-    background-image:url(shutterstock_160993595.png);
+#theReadingList {
+    /* background-image:url(shutterstock_160993595.png); */
     background-color: #353535;
+    background-repeat: repeat;
     color: black;
     border-radius: 15px; 
     border:solid;
     padding: 2%;
     display: grid;
-    gap: 2%;
+    gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(225px, 200px));
 }
 

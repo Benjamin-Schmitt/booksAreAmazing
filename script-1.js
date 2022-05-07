@@ -21,7 +21,7 @@ let myBooks = [
 
 function displayBooks() { 
   for(var i = 0; i < myBooks.length; i++) {  
-      if(myBooks[i].exists !== true) {        
+      if(myBooks[i].exists !== true) {
         let newDiv = document.createElement('div');
         newDiv.classList = 'card';
         document.getElementById("theReadingList").appendChild(newDiv);
@@ -49,14 +49,14 @@ function displayBooks() {
         auth.classList = 'auth';
         document.querySelectorAll(".card")[i].appendChild(auth);  
 
-        let pageProgressLabel = document.createElement('label');
+        /* let pageProgressLabel = document.createElement('label');
         pageProgressLabel.innerText = 'at page'; 
         pageProgressLabel.classList = 'pageProgLab';
         let pageProgress = document.createElement('input');
         pageProgress.type = 'number';
         pageProgress.classList = 'pageProg';
         document.querySelectorAll(".card")[i].appendChild(pageProgressLabel);    
-        document.querySelectorAll(".card")[i].appendChild(pageProgress);
+        document.querySelectorAll(".card")[i].appendChild(pageProgress); */
 
         let delButton = document.createElement('button');  
         delButton.onclick = deleteBooks;      
@@ -77,25 +77,32 @@ function deleteBooks() {
     let auth = document.querySelectorAll('.auth')[index];
     let delButtonT = document.querySelectorAll(".delete")[index];
     let title = document.querySelectorAll(".title")[index];
-    let pageCountLab = document.querySelectorAll(".pageProgLab")[index];
-    let pageCount = document.querySelectorAll(".pageProg")[index];
+    //let pageCountLab = document.querySelectorAll(".pageProgLab")[index];
+    //let pageCount = document.querySelectorAll(".pageProg")[index];
     let newDiv = document.querySelectorAll(".card")[index];
     let brbd = document.querySelector("#brbd");
-    
+    let isbn = document.querySelectorAll(".isbn")[index];
+    let readingList = document.getElementById("theReadingList");
+
     i = index;
-    books.onclick = function() {      
+    books.onclick = function() {   
+      isbn.remove();   
       img.remove();
       auth.remove();
       delButtonT.remove();
       title.remove();
-      pageCountLab.remove();
-      pageCount.remove();
+      //pageCountLab.remove();
+      //pageCount.remove();
       newDiv.remove();
+      
 
       // workaround
       if(myBooks.length === 1) {
         myBooks.splice(0, 1);
-        brbd.remove();
+        if(brbd) {
+          brbd.remove();
+        }        
+        //readingList.remove();
       } else {
         myBooks.splice(index, 1);
       }
@@ -166,7 +173,7 @@ function queryOpenLibrary() {
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]
           +"-M.jpg'><br>"
           +"<p>isbn: "+response.docs[i].isbn[0]+"</p>"
-          +"<button class='addToMyReadingList'>add to my reading list</button>"
+          +"<button class='addToMyReadingList'>add to list</button>"
           console.log(response.docs[0]);
       }
       document.querySelector(".librarian").remove()

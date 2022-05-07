@@ -5,7 +5,8 @@ let myBooks = [
     author: "Charles Desmond",
     cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
     exists: false,
-    isbn: "isbn: 9780911572377"
+    isbn: "isbn: 9780911572377",
+    atPage: 666
   },
   {
     id: 1,
@@ -13,7 +14,8 @@ let myBooks = [
     author: "Sir Henry Thompson",
     cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
     exists: false,
-    isbn: "isbn: 1590861191"
+    isbn: "isbn: 1590861191",
+    atPage: 666
   },
 ];
 
@@ -54,14 +56,12 @@ function displayBooks() {
         pageProgress.type = 'number';
         pageProgress.classList = 'pageProg';
         document.querySelectorAll(".card")[i].appendChild(pageProgressLabel);    
-        document.querySelectorAll(".card")[i].appendChild(pageProgress);    
+        document.querySelectorAll(".card")[i].appendChild(pageProgress);
 
         let delButton = document.createElement('button');  
         delButton.onclick = deleteBooks;      
         delButton.innerText = 'delete';
-        delButton.style.display = 'block';
-        delButton.classList = 'delete';
-        delButton.style.marginBottom = '25px';   
+        delButton.classList = 'delete'; 
         document.querySelectorAll(".card")[i].appendChild(delButton);
 
         myBooks[i].exists = true;
@@ -173,7 +173,7 @@ function queryOpenLibrary() {
       document.querySelector(".librariantext").remove()
     addBooksToMyBooksArray()
     deleteBooks()
-  })/* .catch(e => {
+  }).catch(e => {
     if(e) {
       let a=document.createElement('a');
       a.target='_blank';
@@ -192,7 +192,7 @@ function queryOpenLibrary() {
       
       setTimeout(window.location.reload.bind(window.location), 3000)
     }
-  }) */
+  })
 };
 
 document.getElementById("input").addEventListener("keypress", function(event) {
@@ -202,10 +202,8 @@ document.getElementById("input").addEventListener("keypress", function(event) {
   }
 });
 
-
 function flip(){
   // flip images multiple times when adding to the reading list
 }
-
 displayBooks()
 deleteBooks()

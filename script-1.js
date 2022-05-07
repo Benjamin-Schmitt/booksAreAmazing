@@ -157,8 +157,10 @@ function queryOpenLibrary() {
   fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value)
   .then(response => response.json())
   .then(response => {
-      for(let i=0; i<3; i++) {
+      for(let i=0; i<2; i++) {
         document.getElementById("output").innerHTML
+        +="<div class='inner'></div>"
+        document.getElementsByClassName("inner")[i].innerHTML
           +="<h2 class='bookTitle'>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]
@@ -171,7 +173,7 @@ function queryOpenLibrary() {
       document.querySelector(".librariantext").remove()
     addBooksToMyBooksArray()
     deleteBooks()
-  }).catch(e => {
+  })/* .catch(e => {
     if(e) {
       let a=document.createElement('a');
       a.target='_blank';
@@ -190,7 +192,7 @@ function queryOpenLibrary() {
       
       setTimeout(window.location.reload.bind(window.location), 3000)
     }
-  })
+  }) */
 };
 
 document.getElementById("input").addEventListener("keypress", function(event) {

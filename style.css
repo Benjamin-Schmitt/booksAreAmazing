@@ -181,13 +181,21 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: start;
     font-family: 'American Typewriter', sans-serif;
     text-align: center;
     font-weight: bold;
     background-color: #09a2ee5b;
     border: solid 2px black;
     border-radius: 5px; 
+    margin-top: 25px;
+}
+
+.inner {
+    width: 350px;
+    border: solid 2px black;
+    margin: 2%;
+    background-color: white;
 }
 
 /* input label */

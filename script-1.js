@@ -5,7 +5,7 @@ let myBooks = [
     author: "Charles Desmond",
     cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
     exists: false,
-    isbn: 123
+    isbn: "isbn: 9780911572377"
   },
   {
     id: 1,
@@ -13,7 +13,7 @@ let myBooks = [
     author: "Sir Henry Thompson",
     cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
     exists: false,
-    isbn: 123
+    isbn: "isbn: 1590861191"
   },
 ];
 
@@ -107,9 +107,10 @@ function addBooksToMyBooksArray() {
   let cover = document.querySelectorAll(".addToMyReadingList");
   cover.forEach(function(cv, ind) {
     cv.onclick = function saveCover() {    
-      var img = document.getElementsByTagName("img")[ind]
-      let auth = document.getElementsByTagName("label")[ind+1].innerText
-      let title = document.getElementsByTagName("h2")[ind].innerText
+      var img = document.getElementsByTagName("img")[ind];
+      let auth = document.getElementsByTagName("label")[ind+1].innerText;
+      let title = document.getElementsByTagName("h2")[ind].innerText;
+      let isbn = document.getElementsByTagName("p")[ind].innerText;
       let titleCheck = [];      
       myBooks.forEach(function(currentValue) {
         titleCheck.push(currentValue.title === title);              
@@ -128,8 +129,8 @@ function addBooksToMyBooksArray() {
             title: title,
             author: auth,
             cover: img.src,
-            exists: false  ,
-            isbn:  123
+            exists: false,
+            isbn: isbn
           },
         )
       }      
@@ -156,12 +157,13 @@ function queryOpenLibrary() {
   fetch("http://openlibrary.org/search.json?q="+document.getElementById("input").value)
   .then(response => response.json())
   .then(response => {
-      for(let i=0; i<1; i++) {
+      for(let i=0; i<3; i++) {
         document.getElementById("output").innerHTML
           +="<h2 class='bookTitle'>"+response.docs[i].title+"</h2>"
-
           +"<label>"+response.docs[i].author_name[0]+"</label>"
-          +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]+"-M.jpg'><br>"
+          +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]
+          +"-M.jpg'><br>"
+          +"<p>isbn: "+response.docs[i].isbn[0]+"</p>"
           +"<button class='addToMyReadingList'>add to my reading list</button>"
           console.log(response.docs[0]);
       }

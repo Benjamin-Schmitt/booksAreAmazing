@@ -22,7 +22,6 @@ button:hover{
 .addToMyReadingList {
     background: #73ff00f0;
 }
-
 .addToMyReadingList:hover {
     background: #6ee60c45;
     box-shadow: 3px 1px 1px rgb(0, 255, 153);
@@ -47,8 +46,6 @@ button:hover{
     font-size: 25px;
 }
 /*******************************************/
-
-
 
 
 
@@ -213,5 +210,3 @@ button:hover{
     font-size: 30px;
     animation: blink 1s;
 }
-
-

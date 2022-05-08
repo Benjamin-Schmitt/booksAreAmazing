@@ -3,18 +3,60 @@ html {
     margin: auto;
 }
 
+
+/*******************************************/
+/* ALL buttons */
 button {
-    width: 100px;
-    height: 35px;
+    width: 120px;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 10px 10px 10px 10px;
+    margin: 1%;
 }
+button:hover{
+    cursor:pointer;
+}
+
+/*add to readinglist*/
+.addToMyReadingList {
+    background: #73ff00f0;
+}
+
+.addToMyReadingList:hover {
+    background: #6ee60c45;
+    box-shadow: 3px 1px 1px rgb(0, 255, 153);
+    font-size: 25px;
+}
+
+/* search button */
+#search {
+    background-color: greenyellow;
+}
+#search:hover {
+    background-color: greenyellow;
+    box-shadow: 3px 1px 1px rgb(5, 63, 239);
+}
+
+/* delete button */
+.delete{
+    background: rgb(255, 0, 0);
+}
+.delete:hover {
+    box-shadow: 3px 1px 1px rgba(151, 38, 38, 0.766);
+    font-size: 25px;
+}
+/*******************************************/
+
+
+
+
 
 #brbd {
     font-family: 'American Typewriter', sans-serif;
     font-weight: normal;
     text-align: left;
 }
-
-
 
 .librarian {
     width: 200px;
@@ -24,8 +66,6 @@ button {
 #librarian {
     display: block;
 }
-
-
 
 #typed-strings {
     display: block;
@@ -37,7 +77,8 @@ button {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background: #09a2ee91;
+    /* background: #09a2ee91; */
+    background: #09a2eed8;
     color: black;
     height: 100%;
     width: 100%;
@@ -46,11 +87,13 @@ button {
     background-position: center;
     background-repeat: no-repeat;
     border: solid;
+    font-weight: bold;
+    font-size: 20px;
 }
 
 
 #theReadingList {
-    /* background-image:url(shutterstock_160993595.png); */
+    background-image:url(shutterstock_160993595.png);
     background-color: #353535;
     background-repeat: repeat;
     color: black;
@@ -93,25 +136,8 @@ button {
     font-weight: normal;  
 }
 
-
-
 .title {
     text-align: center;
-}
-
-.delete{
-    border: solid 1px black;
-    background: #e60c0c;
-    border-radius: 10px 10px 10px 10px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.delete:hover {
-    background: #e60c0c;
-    border-radius: 10% 20% / 50% 40%;
-    font-weight: bold;
-    box-shadow: 10px 5px 5px orange;
 }
 
 .pageProg {   
@@ -123,24 +149,7 @@ button {
     margin-top: 10px;
 }
 
-.addToMyReadingList {
-    border: solid 1px black;
-    background: #6ee60c45;
-    border-radius: 10px 10px 10px 10px;
-    font-weight: bold;
-    margin-top: 10px;    
-    margin-bottom: 25px;
-}
 
-.addToMyReadingList:hover {
-    border: solid 1px black;
-    background: #6ee60c45;
-    border-radius: 10px 10px 10px 10px;
-    font-weight: bold;
-    margin-top: 10px;
-    box-shadow: 3px 1px 1px rgb(5, 239, 145);
-    margin-bottom: 25px;
-}
 
 
 
@@ -161,22 +170,6 @@ button {
     font-size: 20px;
 }
 
-/* search button */
-#search {
-    background-color: greenyellow;
-    border: none;
-    border-radius: 10px 10px 10px 10px;
-    font-size: 25px;
-}
-
-/* search button when hovering */
-#search:hover {
-    width: 100px;
-    height: 34px;
-    background-color: greenyellow;
-    box-shadow: 3px 1px 1px rgb(5, 63, 239);
-    border: 2px solid black;
-}
 
 /* search results */
 #output {

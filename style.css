@@ -111,7 +111,7 @@ button:hover{
     height: auto;
 }
 
-.image:hover {
+/* .image:hover {
     transform: rotateY(180deg);
     width: 175px;
     height: auto;
@@ -125,7 +125,7 @@ button:hover{
     height: auto;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-}
+} */
 
 .bookTitle {
     font-family: 'American Typewriter', sans-serif;
@@ -173,7 +173,7 @@ button:hover{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: start;
+    align-items: center;
     font-family: 'American Typewriter', sans-serif;
     text-align: center;
     font-weight: bold;

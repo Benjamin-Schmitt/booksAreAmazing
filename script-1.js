@@ -39,6 +39,7 @@ function displayBooks() {
         document.querySelectorAll(".card")[i].appendChild(titel);
 
         let img = document.createElement('img');
+        let flipCardInner = 
         img.src = myBooks[i].cover;
         img.classList = 'image';
         document.querySelectorAll(".card")[i].appendChild(img);   

@@ -34,8 +34,6 @@ function displayBooks() {
         document.querySelectorAll(".card")[i].appendChild(FlipCardInner);
         document.querySelectorAll(".flipcardinner")[i].appendChild(FlipCardFront);
         document.querySelectorAll(".flipcardinner")[i].appendChild(FlipCardBack);
-
-        FlipCardBack.innerHTML = "TEST";
         
         let isbn = document.createElement('li'); 
         isbn.style.listStyle = 'none';  
@@ -52,7 +50,7 @@ function displayBooks() {
         let img = document.createElement('img');        
         img.src = myBooks[i].cover;
         img.classList = 'image';       
-        document.querySelectorAll(".flipcardfront")[i].appendChild(img);   
+        document.querySelectorAll(".flipcardfront")[i].appendChild(img); 
 
         let auth = document.createElement('li');
         auth.style.listStyle = 'none';
@@ -73,7 +71,13 @@ function displayBooks() {
         delButton.onclick = deleteBooks;      
         delButton.innerText = 'delete';
         delButton.classList = 'delete'; 
-        document.querySelectorAll(".flipcardfront")[i].appendChild(delButton); 
+        document.querySelectorAll(".flipcardfront")[i].appendChild(delButton);
+        delButtonCatch = document.querySelectorAll(".delete")[i];
+
+        let isbn_catch = document.querySelectorAll(".isbn")[i].innerText;
+        FlipCardBack.innerHTML =
+        "<br>" + isbn_catch + "<br>"
+        + delButtonCatch;
 
         myBooks[i].exists = true;
     }

@@ -12,8 +12,6 @@ button {
     border: none;
     border-radius: 10px 10px 10px 10px;
     margin: 1%;
-    display: block;
-    text-align: center;
 }
 button:hover{
     cursor:pointer;

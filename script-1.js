@@ -69,13 +69,23 @@ function displayBooks() {
         document.querySelectorAll(".flipcardfront")[i].appendChild(pageProgressLabel);    
         document.querySelectorAll(".flipcardfront")[i].appendChild(pageProgress); 
 
-        let buyButton = document.createElement('button');
-        buyButton.innerText = "buy this book"
-        buyButton.onclick = function buyBook() {
-          alert("book bought");
+        if(myBooks[i].bought !== true) {
+          let buyButton = document.createElement('button');
+          buyButton.classList = 'buyButton';
+          buyButton.innerText = "buy this book";         
+          buyButton.onclick = function buyBook() {
+            myBooks[i-1].bought = true;
+            console.log(myBooks[i-1].bought)
+            alert("book bought");
+            let status = document.createElement("label"); 
+            status.innerText = `Bought: ${myBooks[i-1].bought}`;
+            document.querySelectorAll(".bought")[i-1].remove();
+            document.querySelectorAll(".flipcardback")[i-1].appendChild(status);
+            //document.querySelectorAll(".buyButton")[i-1].remove();
+          }
+          buyButton.classList = "buyButton";
+          document.querySelectorAll(".flipcardback")[i].appendChild(buyButton);
         }
-        buyButton.classList = "buyButton";
-        document.querySelectorAll(".flipcardback")[i].appendChild(buyButton);
 
         let delButton = document.createElement('button');  
         delButton.onclick = deleteBooks;      
@@ -83,7 +93,8 @@ function displayBooks() {
         delButton.classList = 'delete'; 
         document.querySelectorAll(".flipcardback")[i].appendChild(delButton);
 
-        let status = document.createElement("label"); 
+        let status = document.createElement("label");
+        status.classList = 'bought';
         status.innerText = `Bought: ${myBooks[i].bought}`;
         document.querySelectorAll(".flipcardback")[i].appendChild(status)
 
@@ -92,11 +103,7 @@ function displayBooks() {
   }
 };
 
-
-
-
 function deleteBooks() {
-  console.log("test")
   let delButton = document.querySelectorAll(".delete");
   let i = 0;
   delButton.forEach(function(books, index) {
@@ -148,7 +155,7 @@ function addBooksToMyBooksArray() {
       myBooks.forEach(function(currentValue) {
         titleCheck.push(currentValue.title === title);              
       })
-      console.log(titleCheck);
+      //console.log(titleCheck);
         
       if(titleCheck.includes(true)) {
         console.log("book is in array");
@@ -163,7 +170,8 @@ function addBooksToMyBooksArray() {
             author: auth,
             cover: img.src,
             exists: false,
-            isbn: isbn
+            isbn: isbn,
+            bought: false
           },
         )
       }      
@@ -200,7 +208,7 @@ function queryOpenLibrary() {
           +"-M.jpg'><br>"
           +"<p>isbn: "+response.docs[i].isbn[0]+"</p>"
           +"<button class='addToMyReadingList'>add to list</button>"
-          console.log(response.docs[0]);
+          //console.log(response.docs[0]);
       }
       document.querySelector(".librarian").remove()
       document.querySelector(".librariantext").remove()

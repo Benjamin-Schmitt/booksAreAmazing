@@ -69,13 +69,13 @@ button:hover{
     font-size: 50px;
 }
 
+
 .card {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    /* background: #09a2ee91; */
-    background: #09a2eed8;
+    background: #09a2ee91; 
     color: black;
     height: 100%;
     width: 100%;
@@ -86,11 +86,13 @@ button:hover{
     border: solid;
     font-weight: bold;
     font-size: 20px;
+   
 }
 
 
+
 #theReadingList {
-    background-image:url(shutterstock_160993595.png);
+    /* background-image:url(shutterstock_160993595.png); */
     background-color: #353535;
     background-repeat: repeat;
     color: black;
@@ -99,7 +101,7 @@ button:hover{
     padding: 2%;
     display: grid;
     gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(225px, 200px));
+    grid-template-columns: repeat(auto-fill, minmax(275px, 200px));
 }
 
 
@@ -126,6 +128,60 @@ button:hover{
     transition: transform 0.8s;
     transform-style: preserve-3d;
 } */
+/* This container is needed to position the front and back side */
+.flipcardinner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .card:hover .flipcardinner {
+    transform: rotateY(180deg)
+  }
+  
+  /* Position the front and back side */
+  .flipcardfront, .flipcardback {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; 
+    background: #09a2ee91; 
+    color: black;
+    border-radius: 5px; 
+    /* background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: solid;
+    font-weight: bold;
+    font-size: 20px; */
+    
+  }
+  
+  /* Style the front side (fallback if image is missing) */
+  .flipcardfront {
+    background-color: #09a2ee91;
+    color: black;
+  }
+  
+  /* Style the back side */
+  .flipcardback {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: dodgerblue;
+    color: white;
+    transform: rotateY(180deg);
+  }
 
 .bookTitle {
     font-family: 'American Typewriter', sans-serif;

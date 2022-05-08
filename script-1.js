@@ -24,46 +24,56 @@ function displayBooks() {
       if(myBooks[i].exists !== true) {
         let newDiv = document.createElement('div');
         newDiv.classList = 'card';
+        let FlipCardInner = document.createElement('div');
+        FlipCardInner.classList="flipcardinner"
+        let FlipCardFront = document.createElement('div');
+        FlipCardFront.classList="flipcardfront"
+        let FlipCardBack = document.createElement('div');
+        FlipCardBack.classList="flipcardback"
         document.getElementById("theReadingList").appendChild(newDiv);
+        document.querySelectorAll(".card")[i].appendChild(FlipCardInner);
+        document.querySelectorAll(".flipcardinner")[i].appendChild(FlipCardFront);
+        document.querySelectorAll(".flipcardinner")[i].appendChild(FlipCardBack);
 
+        FlipCardBack.innerHTML = "TEST";
+        
         let isbn = document.createElement('li'); 
         isbn.style.listStyle = 'none';  
         isbn.innerText = myBooks[i].isbn;
         isbn.classList = 'isbn';
-        document.querySelectorAll(".card")[i].appendChild(isbn);
+        document.querySelectorAll(".flipcardfront")[i].appendChild(isbn); 
 
         let titel = document.createElement('li');    
         titel.style.listStyle = 'none';    
         titel.innerText = myBooks[i].title;
         titel.classList = 'title';
-        document.querySelectorAll(".card")[i].appendChild(titel);
+        document.querySelectorAll(".flipcardfront")[i].appendChild(titel); 
 
-        let img = document.createElement('img');
-        let flipCardInner = 
+        let img = document.createElement('img');        
         img.src = myBooks[i].cover;
-        img.classList = 'image';
-        document.querySelectorAll(".card")[i].appendChild(img);   
+        img.classList = 'image';       
+        document.querySelectorAll(".flipcardfront")[i].appendChild(img);   
 
         let auth = document.createElement('li');
         auth.style.listStyle = 'none';
         auth.innerText = "by " + myBooks[i].author;     
         auth.classList = 'auth';
-        document.querySelectorAll(".card")[i].appendChild(auth);  
+        document.querySelectorAll(".flipcardfront")[i].appendChild(auth);   
 
-        /* let pageProgressLabel = document.createElement('label');
+        let pageProgressLabel = document.createElement('label');
         pageProgressLabel.innerText = 'at page'; 
         pageProgressLabel.classList = 'pageProgLab';
         let pageProgress = document.createElement('input');
         pageProgress.type = 'number';
         pageProgress.classList = 'pageProg';
-        document.querySelectorAll(".card")[i].appendChild(pageProgressLabel);    
-        document.querySelectorAll(".card")[i].appendChild(pageProgress); */
+        document.querySelectorAll(".flipcardfront")[i].appendChild(pageProgressLabel);    
+        document.querySelectorAll(".flipcardfront")[i].appendChild(pageProgress); 
 
         let delButton = document.createElement('button');  
         delButton.onclick = deleteBooks;      
         delButton.innerText = 'delete';
         delButton.classList = 'delete'; 
-        document.querySelectorAll(".card")[i].appendChild(delButton);
+        document.querySelectorAll(".flipcardfront")[i].appendChild(delButton); 
 
         myBooks[i].exists = true;
     }

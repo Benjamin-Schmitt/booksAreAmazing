@@ -6,12 +6,14 @@ html {
 /*******************************************/
 /* ALL buttons */
 button {
-    width: 120px;
+    min-width: 120px;
     height: 30px;
     font-size: 20px;
     border: none;
     border-radius: 10px 10px 10px 10px;
     margin: 1%;
+    display: block;
+    text-align: center;
 }
 button:hover{
     cursor:pointer;
@@ -43,6 +45,14 @@ button:hover{
 .delete:hover {
     box-shadow: 3px 1px 1px rgba(151, 38, 38, 0.766);
     font-size: 25px;
+}
+
+.buyButton {
+    background-color: goldenrod;
+}
+.buyButton:hover {
+    box-shadow: 3px 1px 1px rgba(151, 38, 38, 0.766);
+    font-size: 25px; 
 }
 /*******************************************/
 

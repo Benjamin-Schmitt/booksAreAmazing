@@ -6,7 +6,8 @@ let myBooks = [
     cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
     exists: false,
     isbn: "isbn: 9780911572377",
-    atPage: 666
+    atPage: 666,
+    bought: true
   },
   {
     id: 1,
@@ -15,7 +16,8 @@ let myBooks = [
     cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
     exists: false,
     isbn: "isbn: 1590861191",
-    atPage: 666
+    atPage: 666,
+    bought: false
   },
 ];
 
@@ -39,7 +41,7 @@ function displayBooks() {
         isbn.style.listStyle = 'none';  
         isbn.innerText = myBooks[i].isbn;
         isbn.classList = 'isbn';
-        document.querySelectorAll(".flipcardfront")[i].appendChild(isbn); 
+        document.querySelectorAll(".flipcardback")[i].appendChild(isbn); 
 
         let titel = document.createElement('li');    
         titel.style.listStyle = 'none';    
@@ -67,24 +69,34 @@ function displayBooks() {
         document.querySelectorAll(".flipcardfront")[i].appendChild(pageProgressLabel);    
         document.querySelectorAll(".flipcardfront")[i].appendChild(pageProgress); 
 
+        let buyButton = document.createElement('button');
+        buyButton.innerText = "buy this book"
+        buyButton.onclick = function buyBook() {
+          alert("book bought");
+        }
+        buyButton.classList = "buyButton";
+        document.querySelectorAll(".flipcardback")[i].appendChild(buyButton);
+
         let delButton = document.createElement('button');  
         delButton.onclick = deleteBooks;      
         delButton.innerText = 'delete';
         delButton.classList = 'delete'; 
-        document.querySelectorAll(".flipcardfront")[i].appendChild(delButton);
-        delButtonCatch = document.querySelectorAll(".delete")[i];
+        document.querySelectorAll(".flipcardback")[i].appendChild(delButton);
 
-        let isbn_catch = document.querySelectorAll(".isbn")[i].innerText;
-        FlipCardBack.innerHTML =
-        "<br>" + isbn_catch + "<br>"
-        + delButtonCatch;
+        let status = document.createElement("label"); 
+        status.innerText = `Bought: ${myBooks[i].bought}`;
+        document.querySelectorAll(".flipcardback")[i].appendChild(status)
 
         myBooks[i].exists = true;
     }
   }
 };
 
+
+
+
 function deleteBooks() {
+  console.log("test")
   let delButton = document.querySelectorAll(".delete");
   let i = 0;
   delButton.forEach(function(books, index) {
@@ -92,8 +104,8 @@ function deleteBooks() {
     let auth = document.querySelectorAll('.auth')[index];
     let delButtonT = document.querySelectorAll(".delete")[index];
     let title = document.querySelectorAll(".title")[index];
-    //let pageCountLab = document.querySelectorAll(".pageProgLab")[index];
-    //let pageCount = document.querySelectorAll(".pageProg")[index];
+    let pageCountLab = document.querySelectorAll(".pageProgLab")[index];
+    let pageCount = document.querySelectorAll(".pageProg")[index];
     let newDiv = document.querySelectorAll(".card")[index];
     let brbd = document.querySelector("#brbd");
     let isbn = document.querySelectorAll(".isbn")[index];
@@ -106,18 +118,17 @@ function deleteBooks() {
       auth.remove();
       delButtonT.remove();
       title.remove();
-      //pageCountLab.remove();
-      //pageCount.remove();
+      pageCountLab.remove();
+      pageCount.remove();
       newDiv.remove();
       
 
-      // workaround
       if(myBooks.length === 1) {
         myBooks.splice(0, 1);
         if(brbd) {
           brbd.remove();
+          //readingList.remove();
         }        
-        //readingList.remove();
       } else {
         myBooks.splice(index, 1);
       }

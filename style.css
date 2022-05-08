@@ -99,10 +99,10 @@ button:hover{
 }
 
 .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-center;
-    align-items: center;
+    /* display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center; */
     
     border-radius: 25px;   
     font-weight: bold;
@@ -226,9 +226,9 @@ button:hover{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
     font-family: 'American Typewriter', sans-serif;
-    text-align: center;
+    /* text-align: center; */
     font-weight: bold;
     background-color: #09a2ee5b;
     border: solid 2px black;
@@ -237,7 +237,9 @@ button:hover{
 }
 
 .inner {
-    width: 350px;
+    display: flex;
+    justify-content: flex-start;
+    width: 650px;
     border: solid 2px black;
     margin: 2%;
     background-color: white;

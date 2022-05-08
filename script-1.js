@@ -202,10 +202,10 @@ function queryOpenLibrary() {
         document.getElementById("output").innerHTML
         +="<div class='inner'></div>"
         document.getElementsByClassName("inner")[i].innerHTML
-          +="<h2 class='bookTitle'>"+response.docs[i].title+"</h2>"
-          +"<label>"+response.docs[i].author_name[0]+"</label>"
-          +"<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]
+          +="<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]
           +"-M.jpg'><br>"
+          +"<h2 class='bookTitle'>"+response.docs[i].title+"</h2>"
+          +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<p>isbn: "+response.docs[i].isbn[0]+"</p>"
           +"<button class='addToMyReadingList'>add to list</button>"
           //console.log(response.docs[0]);

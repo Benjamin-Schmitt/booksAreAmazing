@@ -1,6 +1,7 @@
 html {
     max-width: 1200px;
     margin: auto;
+    background-color: #3fe42620;
 }
 
 /*******************************************/
@@ -57,7 +58,7 @@ button:hover{
 #brbd {
     font-family: 'American Typewriter', sans-serif;
     font-weight: normal;
-    text-align: left;
+    text-align: center;
 }
 
 .librarian {
@@ -113,7 +114,7 @@ button:hover{
     width: 100%x;
     height: 425px;
 
-    background-color: white;
+    background-color: #09a2ee5b;
 }
 
 
@@ -143,13 +144,13 @@ button:hover{
 /* Style the front side (fallback if image is missing) */
 .flipcardfront {
     border-radius: 25px; 
-    background-color: #1ec395dd;
+    background-color: #09a2ee5b;
 }
 
 /* Style the back side */
 .flipcardback {
     border-radius: 25px; 
-    background-color: #1ec395dd;
+    background-color: #09a2ee5b;
     transform: rotateY(180deg);
 }
 
@@ -158,34 +159,9 @@ button:hover{
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .bookTitle {
     font-family: 'American Typewriter', sans-serif;
-    text-align: center;
+    text-align: left;
     font-weight: normal;  
 }
 
@@ -226,23 +202,39 @@ button:hover{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     font-family: 'American Typewriter', sans-serif;
-    /* text-align: center; */
+    /* text-align: left; */
     font-weight: bold;
     background-color: #09a2ee5b;
     border: solid 2px black;
     border-radius: 5px; 
     margin-top: 25px;
 }
-
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 500px;
+    background-color: #09a2eeaf;
+    margin: 1%;
+    border-radius: 5px;
+    
+}
 .inner {
     display: flex;
     justify-content: flex-start;
-    width: 650px;
-    border: solid 2px black;
+    /* border: solid 2px black; */
     margin: 2%;
     background-color: white;
+    
+}
+.inner2 {
+    /* border: solid 2px black; */
+    font-size: 12px !important;
+    margin: 2%;
+    height: 155px;
 }
 
 /* input label */

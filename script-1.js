@@ -200,11 +200,16 @@ function queryOpenLibrary() {
   .then(response => {
       for(let i=0; i<2; i++) {
         document.getElementById("output").innerHTML
-        +="<div class='inner'></div>"
+        +="<div class='container'></div>" 
+        document.getElementsByClassName("container")[i].innerHTML
+        +="<div class='inner'></div>"        
         document.getElementsByClassName("inner")[i].innerHTML
           +="<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]
-          +"-M.jpg' width='100px height='100px'><br>"
-          +"<h2 class='bookTitle'>"+response.docs[i].title+"</h2>"
+          +"-M.jpg' width='100px height='100px'><br>"          
+          document.getElementsByClassName("container")[i].innerHTML
+          +="<div class='inner2'></div>"
+          document.getElementsByClassName("inner2")[i].innerHTML
+          +="<h2 class='bookTitle'>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<p>isbn: "+response.docs[i].isbn[0]+"</p>"
           +"<button class='addToMyReadingList'>add to list</button>"

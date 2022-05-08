@@ -203,7 +203,7 @@ function queryOpenLibrary() {
         +="<div class='inner'></div>"
         document.getElementsByClassName("inner")[i].innerHTML
           +="<br><img src='http://covers.openlibrary.org/b/isbn/"+response.docs[i].isbn[0]
-          +"-M.jpg'><br>"
+          +"-M.jpg' width='100px height='100px'><br>"
           +"<h2 class='bookTitle'>"+response.docs[i].title+"</h2>"
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<p>isbn: "+response.docs[i].isbn[0]+"</p>"

@@ -114,7 +114,8 @@ button:hover{
     width: 100%x;
     height: 425px;
 
-    background-color: #09a2ee5b;
+    /* background color here needs to be deleted for better flipping effect*/
+    /* background-color: #09a2ee5b; */
 }
 
 
@@ -203,6 +204,7 @@ button:hover{
     /* text-align: left; */
     font-weight: bold;
     background-color: #09a2ee5b;
+
     border: solid 2px black;
     border-radius: 5px; 
     margin-top: 25px;

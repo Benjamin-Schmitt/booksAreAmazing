@@ -21,8 +21,7 @@ let myBooks = [
   },
 ];
 
-function displayBooks() { 
-
+function displayBooks() {
   for(var i = 0; i < myBooks.length; i++) {  
       if(myBooks[i].exists !== true) {
         let newDiv = document.createElement('div');
@@ -106,49 +105,15 @@ function displayBooks() {
 
 function deleteBooks() {
   let delButtons = document.querySelectorAll(".delete");
-  //let i = 0;
   delButtons.forEach(function(deleteBtn, index) {
-   /*  let img = document.getElementsByClassName ('image')[index];
-    let auth = document.querySelectorAll('.auth')[index];
-    let delButtonT = document.querySelectorAll(".delete")[index];
-    let title = document.querySelectorAll(".title")[index];
-    let pageCountLab = document.querySelectorAll(".pageProgLab")[index];
-    let pageCount = document.querySelectorAll(".pageProg")[index];
-    let newDiv = document.querySelectorAll(".card")[index];
-    let brbd = document.querySelector("#brbd");
-    let isbn = document.querySelectorAll(".isbn")[index];
-    let readingList = document.getElementById("theReadingList");
- */
-console.dir(delButtons);
-    //i = index;
-    deleteBtn.onclick = function() {         
-    /*   isbn.remove();   
-      img.remove();
-      auth.remove();
-      delButtonT.remove();
-      title.remove();
-      pageCountLab.remove();
-      pageCount.remove();
-      newDiv.remove(); */
-      
-      //console.log(index)
-      myBooks = myBooks.filter((book, arrIndex) => {
-        console.log(`arrInd: ${arrIndex}`)
-        (arrIndex !== index)
-      });
+    deleteBtn.onclick = function() {
+      //update myBooks by iterating over all books in the array (NOT in the DOM) and only return all the books that are not being clicked right now. This works like this: Each INDEX number of the book that is currently targeted by .filter (arrIndex) is checked if its NOT the same as the corresponding index number of the delButtons nodelist. If so, then add to array, effectively updating it.
+      myBooks = myBooks.filter((book, arrIndex) => arrIndex !== index);
 
-      console.log(myBooks)
+      //As for the objects in the DOM, we just return all divs with the class of "card", then access the element with the number of index and then remove it. This index number is taken from the delButton nodelist array.
+      console.log(index);
       document.querySelectorAll('.card')[index].remove()
-      displayBooks()
-      /* if(myBooks.length === 1) {
-        myBooks.splice(0, 1);
-        if(brbd) {
-          brbd.remove();
-          //readingList.remove();
-        }        
-      } else {
-        myBooks.splice(index, 1);
-      } */
+      //displayBooks()      
     }
   })
 };

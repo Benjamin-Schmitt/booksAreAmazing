@@ -5,7 +5,7 @@ let myBooks = [
     author: "Charles Desmond",
     cover: "http://covers.openlibrary.org/b/isbn/9780911572377-M.jpg",
     exists: false,
-    isbn: "isbn: 9780911572377",
+    isbn: "9780911572377",
     atPage: 666,
     bought: true
   },
@@ -15,13 +15,14 @@ let myBooks = [
     author: "Sir Henry Thompson",
     cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
     exists: false,
-    isbn: "isbn: 1590861191",
+    isbn: "1590861191",
     atPage: 666,
     bought: false
   },
 ];
 
 function displayBooks() { 
+
   for(var i = 0; i < myBooks.length; i++) {  
       if(myBooks[i].exists !== true) {
         let newDiv = document.createElement('div');
@@ -104,10 +105,10 @@ function displayBooks() {
 };
 
 function deleteBooks() {
-  let delButton = document.querySelectorAll(".delete");
-  let i = 0;
-  delButton.forEach(function(books, index) {
-    let img = document.getElementsByClassName ('image')[index];
+  let delButtons = document.querySelectorAll(".delete");
+  //let i = 0;
+  delButtons.forEach(function(deleteBtn, index) {
+   /*  let img = document.getElementsByClassName ('image')[index];
     let auth = document.querySelectorAll('.auth')[index];
     let delButtonT = document.querySelectorAll(".delete")[index];
     let title = document.querySelectorAll(".title")[index];
@@ -117,20 +118,29 @@ function deleteBooks() {
     let brbd = document.querySelector("#brbd");
     let isbn = document.querySelectorAll(".isbn")[index];
     let readingList = document.getElementById("theReadingList");
-
-    i = index;
-    books.onclick = function() {   
-      isbn.remove();   
+ */
+console.dir(delButtons);
+    //i = index;
+    deleteBtn.onclick = function() {         
+    /*   isbn.remove();   
       img.remove();
       auth.remove();
       delButtonT.remove();
       title.remove();
       pageCountLab.remove();
       pageCount.remove();
-      newDiv.remove();
+      newDiv.remove(); */
       
+      //console.log(index)
+      myBooks = myBooks.filter((book, arrIndex) => {
+        console.log(`arrInd: ${arrIndex}`)
+        (arrIndex !== index)
+      });
 
-      if(myBooks.length === 1) {
+      console.log(myBooks)
+      document.querySelectorAll('.card')[index].remove()
+      displayBooks()
+      /* if(myBooks.length === 1) {
         myBooks.splice(0, 1);
         if(brbd) {
           brbd.remove();
@@ -138,7 +148,7 @@ function deleteBooks() {
         }        
       } else {
         myBooks.splice(index, 1);
-      }
+      } */
     }
   })
 };
@@ -165,7 +175,7 @@ function addBooksToMyBooksArray() {
         console.log("book isn't in array")
         myBooks.push (
           {
-            id: myBooks.length+1,
+            id: myBooks.length,
             title: title,
             author: auth,
             cover: img.src,
@@ -213,7 +223,7 @@ function queryOpenLibrary() {
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<p>isbn: "+response.docs[i].isbn[0]+"</p>"
           +"<button class='addToMyReadingList'>add to list</button>"
-          //console.log(response.docs[0]);
+          console.log(response.docs[0]);
       }
       document.querySelector(".librarian").remove()
       document.querySelector(".librariantext").remove()

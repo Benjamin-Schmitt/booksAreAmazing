@@ -104,18 +104,9 @@ function deleteBooks() {
       console.log(index)
       card.remove();
       myBooks.splice(index, 1);
+      //we call deleteBooks here again to recalibrate the 
+      // indexnumbers of each individual del button
       deleteBooks()
-
-
-      /* if(myBooks.length === 1) {
-        myBooks.splice(0, 1);      
-      } else {
-        // here is the problem: it takes the 1 as index and then logically targets the wrong book because now, the book that used to be 1 in myBooks is now on index 0
-        console.log(index)
-        myBooks.splice(index, 1);
-        //this solves it, because it recalibrates the delButton array index numbers
-        deleteBooks()
-      } */
     }
   })
 };

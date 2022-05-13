@@ -107,13 +107,11 @@ function deleteBooks() {
   let delButtons = document.querySelectorAll(".delete");
   delButtons.forEach(function(deleteBtn, index) {
     deleteBtn.onclick = function() {
-      //update myBooks by iterating over all books in the array (NOT in the DOM) and only return all the books that are not being clicked right now. This works like this: Each INDEX number of the book that is currently targeted by .filter (arrIndex) is checked if its NOT the same as the corresponding index number of the delButtons nodelist. If so, then add to array, effectively updating it.
-      myBooks = myBooks.filter((book, arrIndex) => arrIndex !== index);
-
-      //As for the objects in the DOM, we just return all divs with the class of "card", then access the element with the number of index and then remove it. This index number is taken from the delButton nodelist array.
+      //return all books that are NOT clicked
+      myBooks = myBooks.filter((book, arrIndex) => arrIndex !== index);      
       console.log(index);
       document.querySelectorAll('.card')[index].remove()
-      //displayBooks()      
+      deleteBooks()    
     }
   })
 };

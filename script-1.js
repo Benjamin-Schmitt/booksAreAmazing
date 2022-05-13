@@ -8,17 +8,7 @@ let myBooks = [
     isbn: "9780911572377",
     atPage: 666,
     bought: true
-  },
-  {
-    id: 1,
-    title: "Food and feeding",
-    author: "Sir Henry Thompson",
-    cover: "http://covers.openlibrary.org/b/isbn/0543994767-M.jpg", 
-    exists: false,
-    isbn: "1590861191",
-    atPage: 666,
-    bought: false
-  },
+  }
 ];
 
 function displayBooks() {
@@ -103,20 +93,34 @@ function displayBooks() {
   }
 };
 
-function deleteBooks() {
-  let delButtons = document.querySelectorAll(".delete");
-  delButtons.forEach(function(deleteBtn, index) {
-    deleteBtn.onclick = function() {
-      //update myBooks by iterating over all books in the array (NOT in the DOM) and only return all the books that are not being clicked right now. This works like this: Each INDEX number of the book that is currently targeted by .filter (arrIndex) is checked if its NOT the same as the corresponding index number of the delButtons nodelist. If so, then add to array, effectively updating it.
-      myBooks = myBooks.filter((book, arrIndex) => arrIndex !== index);
 
-      //As for the objects in the DOM, we just return all divs with the class of "card", then access the element with the number of index and then remove it. This index number is taken from the delButton nodelist array.
-      console.log(index);
-      document.querySelectorAll('.card')[index].remove()
-      //displayBooks()      
+
+function deleteBooks() {
+  let delButton = document.querySelectorAll(".delete");
+  delButton.forEach(function(delbtn, index) {
+    let card = document.querySelectorAll(".card")[index];
+
+    delbtn.onclick = function() {
+      console.log(index)
+      card.remove();
+      myBooks.splice(index, 1);
+      deleteBooks()
+
+
+      /* if(myBooks.length === 1) {
+        myBooks.splice(0, 1);      
+      } else {
+        // here is the problem: it takes the 1 as index and then logically targets the wrong book because now, the book that used to be 1 in myBooks is now on index 0
+        console.log(index)
+        myBooks.splice(index, 1);
+        //this solves it, because it recalibrates the delButton array index numbers
+        deleteBooks()
+      } */
     }
   })
 };
+
+
 
 function addBooksToMyBooksArray() {
   let cover = document.querySelectorAll(".addToMyReadingList");
@@ -188,7 +192,7 @@ function queryOpenLibrary() {
           +"<label>"+response.docs[i].author_name[0]+"</label>"
           +"<p>isbn: "+response.docs[i].isbn[0]+"</p>"
           +"<button class='addToMyReadingList'>add to list</button>"
-          console.log(response.docs[0]);
+          //console.log(response.docs[0]);
       }
       document.querySelector(".librarian").remove()
       document.querySelector(".librariantext").remove()

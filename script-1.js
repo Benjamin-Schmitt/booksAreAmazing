@@ -111,7 +111,10 @@ function deleteBooks() {
       myBooks = myBooks.filter((book, arrIndex) => arrIndex !== index);      
       console.log(index);
       document.querySelectorAll('.card')[index].remove()
-      deleteBooks()    
+      
+      // recursive function -> Hint: We don't need a specific stopping condition 
+      // because "onclick" prevents it from running infinitely by default 
+      deleteBooks()  
     }
   })
 };

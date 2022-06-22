@@ -81,7 +81,6 @@ function displayBooks() {
             status.innerText = `Bought: ${myBooks[i-1].bought}`;
             document.querySelectorAll(".bought")[i-1].remove();
             document.querySelectorAll(".flipcardback")[i-1].appendChild(status);
-            //document.querySelectorAll(".buyButton")[i-1].remove();
           }
           buyButton.classList = "buyButton";
           document.querySelectorAll(".flipcardback")[i].appendChild(buyButton);
